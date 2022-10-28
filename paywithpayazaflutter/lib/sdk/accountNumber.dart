@@ -102,8 +102,8 @@ class accountNumber extends State<AccountNumber> {
     String? _selected;
     var Methods = [
       {"id": '1', "image": "packages/paywithpayazaflutter/assets/Transfer.png", "name": "Pay with Transfer"},
-      {"id": '2', "image": "packages/paywithpayazaflutter/assets/Lock.png", "name": "Pay with Bank"},
-      {"id": '3', "image": "packages/paywithpayazaflutter/assets/copy.png", "name": "Pay with Card"}
+      {"id": '2', "image": "packages/paywithpayazaflutter/assets/Bank.png", "name": "Pay with Bank"},
+      {"id": '3', "image": "packages/paywithpayazaflutter/assets/credit-card.png", "name": "Pay with Card"}
     ];
 
     return Scaffold(

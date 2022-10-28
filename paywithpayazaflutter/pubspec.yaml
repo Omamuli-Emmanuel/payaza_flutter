@@ -38,6 +38,8 @@ flutter:
     - assets/success.png
     - assets/payaza.png
     - assets/failed.jpeg
+    - assets/Bank.png
+    - assets/credit-card.png
 
   # For details regarding assets in packages, see
   # https://flutter.dev/assets-and-images/#from-packages
