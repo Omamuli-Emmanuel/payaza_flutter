@@ -126,7 +126,7 @@ class accountNumber extends State<AccountNumber> {
                           primary: Colors.grey[50],
                           elevation: 0,
                           minimumSize: Size(50, 50)),
-                      child: Image.asset("assets/close.png")),
+                      child: Image.asset("packages/paywithpayazaflutter/assets/close.png")),
                   SizedBox(width: 40.0),
                   Expanded(
                     child: DropdownButton(
@@ -170,7 +170,7 @@ class accountNumber extends State<AccountNumber> {
                       child: Row(
                         children: [
                           widget.avatar.isEmpty ?
-                          Image.asset("assets/payaza.png", width: 30.0, height: 30.0,)
+                          Image.asset("packages/paywithpayazaflutter/assets/payaza.png", width: 30.0, height: 30.0,)
                               :
                           Image.network(
                             widget.avatar,
@@ -413,7 +413,7 @@ class accountNumber extends State<AccountNumber> {
                           primary: Colors.grey[50],
                           elevation: 0,
                           minimumSize: Size(50, 50)),
-                      child: Image.asset("assets/close.png")),
+                      child: Image.asset("packages/paywithpayazaflutter/assets/close.png")),
                   SizedBox(width: 40.0),
                   Expanded(
                     child: DropdownButton(
@@ -457,7 +457,7 @@ class accountNumber extends State<AccountNumber> {
                       child: Row(
                         children: [
                           widget.avatar.isEmpty ?
-                          Image.asset("assets/payaza.png", width: 30.0, height: 30.0,)
+                          Image.asset("packages/paywithpayazaflutter/assets/payaza.png", width: 30.0, height: 30.0,)
                               :
                           Image.network(
                             widget.avatar,
