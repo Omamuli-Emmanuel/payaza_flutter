@@ -117,18 +117,19 @@ class accountNumber extends State<AccountNumber> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               SizedBox(height: 20.0, width: double.infinity),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ElevatedButton(onPressed: (){
-                      _showMyDialog();
-                    },
-                        style: ElevatedButton.styleFrom(
-                            primary: Colors.grey[50],
-                            elevation: 0,
-                            minimumSize: Size(50, 50)),
-                        child: Image.asset("packages/paywithpayazaflutter/assets/close.png")),
-                    DropdownButton(
+              Row(
+                children: [
+                  ElevatedButton(onPressed: (){
+                    _showMyDialog();
+                  },
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.grey[50],
+                          elevation: 0,
+                          minimumSize: Size(50, 50)),
+                      child: Image.asset("assets/close.png")),
+                  SizedBox(width: 40.0),
+                  Expanded(
+                    child: DropdownButton(
                       // Initial Value
                       value: 1.toString(),
                       onChanged: (String? newValue) {
@@ -139,6 +140,7 @@ class accountNumber extends State<AccountNumber> {
                       },
                       // Down Arrow Icon
                       icon: const Icon(Icons.keyboard_arrow_down),
+                      isExpanded: true,
                       // Array list of items
                       items: Methods.map((Map map) {
                         return DropdownMenuItem(
@@ -157,8 +159,9 @@ class accountNumber extends State<AccountNumber> {
                         );
                       }).toList(),
                     ),
-                  ],
-                ),
+                  )
+                ],
+              ),
               SizedBox(height: 10.0, width: double.infinity),
                 Row(
                 children: [
@@ -166,6 +169,9 @@ class accountNumber extends State<AccountNumber> {
                   Expanded(
                       child: Row(
                         children: [
+                          widget.avatar.isEmpty ?
+                          Image.asset("assets/payaza.png", width: 30.0, height: 30.0,)
+                              :
                           Image.network(
                             widget.avatar,
                             width: 30.0,
@@ -397,13 +403,62 @@ class accountNumber extends State<AccountNumber> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              SizedBox(height: 40.0, width: double.infinity),
+              SizedBox(height: 20.0, width: double.infinity),
+              Row(
+                children: [
+                  ElevatedButton(onPressed: (){
+                    _showMyDialog();
+                  },
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.grey[50],
+                          elevation: 0,
+                          minimumSize: Size(50, 50)),
+                      child: Image.asset("assets/close.png")),
+                  SizedBox(width: 40.0),
+                  Expanded(
+                    child: DropdownButton(
+                      // Initial Value
+                      value: 1.toString(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          _selected = newValue;
+                        });
+                        print(_selected);
+                      },
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),
+                      isExpanded: true,
+                      // Array list of items
+                      items: Methods.map((Map map) {
+                        return DropdownMenuItem(
+                          value: map["id"].toString(),
+                          child: Row(
+                            children: <Widget>[
+                              Image.asset(
+                                map["image"],
+                                width: 25,
+                              ),
+                              Container(
+                                  margin: EdgeInsets.only(left: 10),
+                                  child: Text(map["name"])),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(height: 10.0, width: double.infinity),
               Row(
                 children: [
                   //first colum on the row
                   Expanded(
                       child: Row(
                         children: [
+                          widget.avatar.isEmpty ?
+                          Image.asset("assets/payaza.png", width: 30.0, height: 30.0,)
+                              :
                           Image.network(
                             widget.avatar,
                             width: 30.0,
