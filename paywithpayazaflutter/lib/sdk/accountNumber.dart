@@ -119,15 +119,15 @@ class accountNumber extends State<AccountNumber> {
               SizedBox(height: 20.0, width: double.infinity),
               Row(
                 children: [
-                  ElevatedButton(onPressed: (){
-                    _showMyDialog();
-                  },
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.grey[50],
-                          elevation: 0,
-                          minimumSize: Size(50, 50)),
-                      child: Image.asset("packages/paywithpayazaflutter/assets/close.png")),
-                  SizedBox(width: 40.0),
+              Container(
+              child: GestureDetector(
+              onTap: (){
+                     _showMyDialog();
+                      },
+                    child: Image.asset("packages/paywithpayazaflutter/assets/close.png"),
+                  ),
+                ),
+                  SizedBox(width: 80.0),
                   Expanded(
                     child: DropdownButton(
                       // Initial Value
@@ -139,7 +139,7 @@ class accountNumber extends State<AccountNumber> {
                         print(_selected);
                       },
                       // Down Arrow Icon
-                      icon: const Icon(Icons.keyboard_arrow_down),
+                      icon: const Icon(Icons.arrow_drop_down),
                       isExpanded: true,
                       // Array list of items
                       items: Methods.map((Map map) {
@@ -406,15 +406,15 @@ class accountNumber extends State<AccountNumber> {
               SizedBox(height: 20.0, width: double.infinity),
               Row(
                 children: [
-                  ElevatedButton(onPressed: (){
-                    _showMyDialog();
-                  },
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.grey[50],
-                          elevation: 0,
-                          minimumSize: Size(50, 50)),
-                      child: Image.asset("packages/paywithpayazaflutter/assets/close.png")),
-                  SizedBox(width: 40.0),
+              Container(
+              child: GestureDetector(
+              onTap: (){
+              _showMyDialog();
+              },
+                child: Image.asset("packages/paywithpayazaflutter/assets/close.png"),
+              ),
+    ),
+                  SizedBox(width: 80.0),
                   Expanded(
                     child: DropdownButton(
                       // Initial Value
@@ -426,7 +426,7 @@ class accountNumber extends State<AccountNumber> {
                         print(_selected);
                       },
                       // Down Arrow Icon
-                      icon: const Icon(Icons.keyboard_arrow_down),
+                      icon: const Icon(Icons.arrow_drop_down),
                       isExpanded: true,
                       // Array list of items
                       items: Methods.map((Map map) {
