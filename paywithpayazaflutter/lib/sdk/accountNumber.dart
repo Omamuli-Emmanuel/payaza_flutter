@@ -751,65 +751,68 @@ class accountNumber extends State<AccountNumber> {
         child: sent
             ? Expanded(
                 flex: 1,
-                child: Container(
-                  padding: EdgeInsets.all(25.0),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: const Color(0xFFF1FDFF)),
-                  child: Center(
-                    child: Column(
-                      children: [
-                        SizedBox(height: 100, width: double.infinity),
-                        Text("( FEES : ${widget.unicode + "" + widget.fee} )"),
-                        SizedBox(
-                          height: 7.0,
-                          width: double.infinity,
-                        ),
-                        Text(
-                          "TRANSFER ${widget.unicode + "" + widget.payable}",
-                          style: TextStyle(fontWeight: FontWeight.w400),
-                        ),
-                        SizedBox(
-                          height: 50.0,
-                          width: double.infinity,
-                        ),
-                        acc.isEmpty
-                            ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            TextButton(
-                                onPressed: (){},
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF1FDFF),
-                                  elevation: 0,
-                                  minimumSize: Size.zero,),
-                                child: Text("")),
-                            Text(
-                              widget.account,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 30.0),
-                              textAlign: TextAlign.right,
-                            ),
-                            TextButton(
-                                onPressed: () async {
-                                  FlutterClipboard.copy(
-                                      widget.account.toString())
-                                      .then((value) {
-                                    return ScaffoldMessenger.of(context)
-                                        .showSnackBar(const SnackBar(
-                                        content: Text(
-                                            "Account number copied successfully")));
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF1FDFF),
-                                  elevation: 0,
-                                  minimumSize: Size.zero,),
-                                child: Image.asset("assets/copy.png"))
-                          ],
-                        )
-                            : Row(
+                child: Center(
+                  child: SingleChildScrollView(
+                      child: Container(
+                        padding: EdgeInsets.all(25.0),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color(0xFFF1FDFF)),
+                        child: Center(
+                          child: Column(
+                            children: [
+                              SizedBox(height: 100, width: double.infinity),
+                              Text("( FEES : ${widget.unicode + "" + widget.fee} )"),
+                              SizedBox(
+                                height: 7.0,
+                                width: double.infinity,
+                              ),
+                              Text(
+                                "TRANSFER ${widget.unicode + "" + widget.payable}",
+                                style: TextStyle(fontWeight: FontWeight.w400),
+                              ),
+                              SizedBox(
+                                height: 50.0,
+                                width: double.infinity,
+                              ),
+                              acc.isEmpty
+                                  ? Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  TextButton(
+                                      onPressed: (){},
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Color(0xFFF1FDFF),
+                                        elevation: 0,
+                                        minimumSize: Size.zero,),
+                                      child: Text("")),
+                                  Text(
+                                    widget.account,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 30.0),
+                                    textAlign: TextAlign.right,
+                                  ),
+                                  TextButton(
+                                      onPressed: () async {
+                                        FlutterClipboard.copy(
+                                            widget.account.toString())
+                                            .then((value) {
+                                          return ScaffoldMessenger.of(context)
+                                              .showSnackBar(const SnackBar(
+                                              content: Text(
+                                                  "Account number copied successfully")));
+                                        });
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Color(0xFFF1FDFF),
+                                        elevation: 0,
+                                        minimumSize: Size.zero,),
+                                      child: Image.asset("packages/paywithpayazaflutter/assets/copy.png"))
+                                ],
+                              )
+                                  : Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(acc,
                                       style: TextStyle(
@@ -821,57 +824,59 @@ class accountNumber extends State<AccountNumber> {
                                             .then((value) {
                                           return ScaffoldMessenger.of(context)
                                               .showSnackBar(const SnackBar(
-                                                  content: Text(
-                                                      "Account number copied successfully")));
+                                              content: Text(
+                                                  "Account number copied successfully")));
                                         });
                                       },
                                       style: ElevatedButton.styleFrom(
                                           primary: Color(0xFFF1FDFF),
                                           elevation: 0,
                                           minimumSize: Size(50, 50)),
-                                      child: Image.asset("packages/paywithpayazaflutter/assets/copy.png"))
+                                      child: Image.asset("assets/copy.png"))
                                 ],
                               ),
-                        Text(
-                          widget.bankName,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xff676E7E),
-                              fontSize: 14.0),
+                              Text(
+                                widget.bankName,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xff676E7E),
+                                    fontSize: 14.0),
+                              ),
+                              SizedBox(
+                                height: 50,
+                                width: double.infinity,
+                              ),
+                              Container(
+                                height: 2,
+                                width: 280,
+                                color: Colors.grey[200],
+                              ),
+                              SizedBox(
+                                height: 50,
+                                width: double.infinity,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("This account is going to expire in "),
+                                  Text(
+                                    "$Hours:$Minutes:$Seconds",
+                                    style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.w400),
+                                  )
+                                ],
+                              ),
+                              Text(
+                                "Make your payment before it expires.",
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
                         ),
-                        SizedBox(
-                          height: 50,
-                          width: double.infinity,
-                        ),
-                        Container(
-                          height: 2,
-                          width: 280,
-                          color: Colors.grey[200],
-                        ),
-                        SizedBox(
-                          height: 50,
-                          width: double.infinity,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("This account is going to expire in "),
-                            Text(
-                              "$Hours:$Minutes:$Seconds",
-                              style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.w400),
-                            )
-                          ],
-                        ),
-                        Text(
-                          "Make your payment before it expires.",
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ),
-                ))
+                      )),
+                )
+            )
             : Expanded(
                 flex: 1,
                 child: Container(
