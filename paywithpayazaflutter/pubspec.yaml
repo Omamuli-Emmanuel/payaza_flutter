@@ -1,6 +1,6 @@
 name: paywithpayazaflutter
 description: The flutter SDK for payaza checkout
-version: 0.2.0
+version: 0.2.1
 homepage: https://github.com/Omamuli-Emmanuel/payaza_flutter.git
 
 environment:

@@ -788,7 +788,7 @@ class accountNumber extends State<AccountNumber> {
                               widget.account,
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 35.0),
+                                  fontSize: 30.0),
                               textAlign: TextAlign.right,
                             ),
                             TextButton(
