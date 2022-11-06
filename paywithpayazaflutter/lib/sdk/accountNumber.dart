@@ -111,7 +111,7 @@ class accountNumber extends State<AccountNumber> {
         //   title: Text("Now paying with payaza"),
         // ),
         body: connection == "Test" ?
-        Container(
+            Container(
           padding: EdgeInsets.all(15.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -250,43 +250,51 @@ class accountNumber extends State<AccountNumber> {
                   Text("This is the response you would recieve when you click on the continue button",
                       textAlign: TextAlign.center),
                   SizedBox(height: 20.0, width: double.infinity),
-                  Container(
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
-                    child:
-                    Row(
-                      children: [
-                        Radio(
-                            value : 1,
-                            groupValue: _value,
-                            onChanged: (value){
-                              setState(() {
-                                _value = value!;
-                                transaction = "success";
-                              });
-                            }
-                        ),
-                        SizedBox(width: 30),
-                        Column(
-                          children: [
-                            Text("Success Transaction", textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 18
-                                )),
-                            Text("Your transaction will appear successful", textAlign: TextAlign.center,)
-                          ],
-                        )
-                      ],
-                    ),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.0),
-                        border: Border.all(
-                            color : Colors.deepPurple
-                        )
+                  GestureDetector(
+                    onTap: (){
+                      _value = 1;
+                    },
+                    child: Container(
+                      padding: EdgeInsets.only(top: 10, bottom: 10),
+                      child: Row(
+                        children: [
+                          Radio(
+                              value : 1,
+                              groupValue: _value,
+                              onChanged: (value){
+                                setState(() {
+                                  //_value = value!;
+                                  _value = 1;
+                                });
+                              }
+                          ),
+                          SizedBox(width: 30),
+                          Column(
+                            children: [
+                              Text("Success Transaction", textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 18
+                                  )),
+                              Text("Your transaction will appear successful", textAlign: TextAlign.center,)
+                            ],
+                          )
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                          border: Border.all(
+                              color : Colors.deepPurple
+                          )
+                      ),
                     ),
                   ),
                   SizedBox(height: 15, width : double.infinity),
-                  Container(
+                  GestureDetector(
+                  onTap: (){
+                    _value = 2;
+                  },
+                  child: Container(
                     padding: EdgeInsets.only(top: 10, bottom: 10),
                     child: Row(
                       children: [
@@ -295,8 +303,8 @@ class accountNumber extends State<AccountNumber> {
                             groupValue: _value,
                             onChanged: (value){
                               setState(() {
-                                _value = value!;
-                                transaction = "failed";
+                                //_value = value!;
+                                _value = 2;
                               });
                             }
                         ),
@@ -319,6 +327,7 @@ class accountNumber extends State<AccountNumber> {
                         )
                     ),
                   ),
+                ),
                   SizedBox(height: 15)
                 ],
               )
@@ -336,9 +345,9 @@ class accountNumber extends State<AccountNumber> {
                           minimumSize: Size(double.infinity, 45.0)),
                       onPressed: (){
                         _value == 1 ?
-                        transaction == "success"
+                        transaction = "success"
                             :
-                        transaction == "failed";
+                        transaction = "failed";
                       },
                       child: Text(
                         "Continue",
@@ -413,7 +422,7 @@ class accountNumber extends State<AccountNumber> {
               },
                 child: Image.asset("packages/paywithpayazaflutter/assets/close.png"),
               ),
-    ),
+            ),
                   SizedBox(width: 80.0),
                   Expanded(
                     child: DropdownButton(
@@ -766,32 +775,40 @@ class accountNumber extends State<AccountNumber> {
                         ),
                         acc.isEmpty
                             ? Row(
-                                children: [
-                                  Text(
-                                    widget.account,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 45.0),
-                                    textAlign: TextAlign.right,
-                                  ),
-                                  ElevatedButton(
-                                      onPressed: () async {
-                                        FlutterClipboard.copy(
-                                                widget.account.toString())
-                                            .then((value) {
-                                          return ScaffoldMessenger.of(context)
-                                              .showSnackBar(const SnackBar(
-                                                  content: Text(
-                                                      "Account number copied successfully")));
-                                        });
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                          primary: Color(0xFFF1FDFF),
-                                          elevation: 0,
-                                          minimumSize: Size(50, 50)),
-                                      child: Image.asset("packages/paywithpayazaflutter/assets/copy.png"))
-                                ],
-                              )
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextButton(
+                                onPressed: (){},
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color(0xFFF1FDFF),
+                                  elevation: 0,
+                                  minimumSize: Size.zero,),
+                                child: Text("")),
+                            Text(
+                              widget.account,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 35.0),
+                              textAlign: TextAlign.right,
+                            ),
+                            TextButton(
+                                onPressed: () async {
+                                  FlutterClipboard.copy(
+                                      widget.account.toString())
+                                      .then((value) {
+                                    return ScaffoldMessenger.of(context)
+                                        .showSnackBar(const SnackBar(
+                                        content: Text(
+                                            "Account number copied successfully")));
+                                  });
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color(0xFFF1FDFF),
+                                  elevation: 0,
+                                  minimumSize: Size.zero,),
+                                child: Image.asset("assets/copy.png"))
+                          ],
+                        )
                             : Row(
                                 children: [
                                   Text(acc,
